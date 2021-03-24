@@ -8,7 +8,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI> 
 #
 
-name: OpenWrt-CI-x86
+name: OpenWrt-CI-x86-raw
 
 on:
   push:
@@ -107,7 +107,7 @@ jobs:
           mkdir -p ./artifact/buildinfo
           rm -rf $(find ./bin/targets/ -type d -name "packages")
           cp -rf $(find ./bin/targets/ -type f) ./artifact/firmware/
-          cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./artifact/package/
+          cp -rf $(find ./bin/packages/ -type f) ./artifact/package/
           cp -rf $(find ./bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
 
       - name: Deliver buildinfo
