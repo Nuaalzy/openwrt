@@ -8,12 +8,12 @@
 # <https://github.com/KFERMercer/OpenWrt-CI> 
 #
 
-name: OpenWrt-CI-x86-raw
+name: OpenWrt-CI-x86-19.07
 
 on:
   push:
     branches: 
-      - master
+      - openwrt-19.07
   # schedule:
   #   - cron: 0 20 * * *
   release:
@@ -107,7 +107,7 @@ jobs:
           mkdir -p ./artifact/buildinfo
           rm -rf $(find ./bin/targets/ -type d -name "packages")
           cp -rf $(find ./bin/targets/ -type f) ./artifact/firmware/
-          cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./artifact/package/
+          cp -rf ./bin/packages/ ./artifact/package/
           cp -rf $(find ./bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
 
       - name: Deliver buildinfo
